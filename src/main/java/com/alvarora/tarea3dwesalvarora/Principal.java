@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 
 public class Principal implements CommandLineRunner {
 
+    //TODO aplicar patrones factory y singletone a los servicios. (Controlador)
     @Autowired
     private PlantaServicioImpl plantaServicio;
 
