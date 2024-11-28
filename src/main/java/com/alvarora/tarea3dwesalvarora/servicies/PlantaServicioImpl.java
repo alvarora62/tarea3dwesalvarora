@@ -3,16 +3,16 @@ package com.alvarora.tarea3dwesalvarora.servicies;
 import com.alvarora.tarea3dwesalvarora.entities.Planta;
 import com.alvarora.tarea3dwesalvarora.repositories.PlantaRepository;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class PlantaServicioImpl implements PlantaServicio{
 
-    private final PlantaRepository plantaRepository;
+    @Autowired
+    private PlantaRepository plantaRepository;
 
     @Override
     public List<Planta> findAll(){
