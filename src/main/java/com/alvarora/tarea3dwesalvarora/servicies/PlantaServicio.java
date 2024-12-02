@@ -7,5 +7,7 @@ import java.util.List;
 public interface PlantaServicio {
 
     List<Planta> findAll();
+    Planta findByCodigo(String codigo);
     boolean save(Planta planta);
+    boolean update(Planta planta);
 }
