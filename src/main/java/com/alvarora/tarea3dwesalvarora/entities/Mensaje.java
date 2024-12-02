@@ -2,11 +2,14 @@ package com.alvarora.tarea3dwesalvarora.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "mensajes")
-public class Mensaje {
+public class Mensaje implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
