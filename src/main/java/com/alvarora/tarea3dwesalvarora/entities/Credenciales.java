@@ -1,11 +1,15 @@
 package com.alvarora.tarea3dwesalvarora.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 
 @Entity
-@Table(name = "credenciales")
+@Table
 public class Credenciales implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -19,48 +23,53 @@ public class Credenciales implements Serializable {
 
     private String password;
 
+    @OneToOne
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Persona persona;
 
-    public Credenciales() {
-    }
+	public Credenciales() {
+		super();
+	}
 
-    public Credenciales(Long id, String username, String password, Persona persona) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.persona = persona;
-    }
+	public Credenciales(Long id, String username, String password, Persona persona) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.persona = persona;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public Persona getPersona() {
-        return persona;
-    }
+	public Persona getPersona() {
+		return persona;
+	}
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+    
+    
 }

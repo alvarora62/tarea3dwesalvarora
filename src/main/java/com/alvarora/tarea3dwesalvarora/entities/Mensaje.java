@@ -1,12 +1,16 @@
 package com.alvarora.tarea3dwesalvarora.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "mensajes")
+@Table
 public class Mensaje implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -16,73 +20,76 @@ public class Mensaje implements Serializable {
     private Long id;
 
     @Column
-    //@Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime fechaHora;
 
     @Column
     private String mensaje;
-
-    @Column
+    
+    @ManyToOne
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Persona persona;
 
-    @Column
+    @ManyToOne
     @JoinColumn(name = "ejemplar_id", referencedColumnName = "id")
     private Ejemplar ejemplar;
 
-    public Mensaje() {
-    }
-
-    public Mensaje(Ejemplar ejemplar, String mensaje, Persona persona, Long id, LocalDateTime fechaHora) {
-        this.ejemplar = ejemplar;
-        this.mensaje = mensaje;
-        this.persona = persona;
-        this.id = id;
-        this.fechaHora = fechaHora;
-    }
-
-    public Ejemplar getEjemplar() {
-        return ejemplar;
-    }
-
-    public void setEjemplar(Ejemplar ejemplar) {
-        this.ejemplar = ejemplar;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
-    }
-
-    public String getMensaje() {
-        return mensaje;
-    }
-
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
-    }
-
-    public LocalDateTime getFechaHora() {
-        return fechaHora;
-    }
-
-    public void setFechaHora(LocalDateTime fechaHora) {
-        this.fechaHora = fechaHora;
-    }
-
     @Override
     public String toString() {
-        return "ID: " + this.id + " | Fecha y Hora: " + this.fechaHora + " | Mensaje: " + this.mensaje + " | Persona: " + this.persona.getId() + " | Ejemplar: " + this.ejemplar.getId();
+        return "ID: " + this.id + " | Fecha y Hora: " + this.fechaHora + " | Mensaje: " + this.mensaje;
     }
+    
+    public Mensaje() {
+		super();
+	}
+
+	public Mensaje(Long id, LocalDateTime fechaHora, String mensaje, Persona persona, Ejemplar ejemplar) {
+		super();
+		this.id = id;
+		this.fechaHora = fechaHora;
+		this.mensaje = mensaje;
+		this.persona = persona;
+		this.ejemplar = ejemplar;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public LocalDateTime getFechaHora() {
+		return fechaHora;
+	}
+
+	public void setFechaHora(LocalDateTime fechaHora) {
+		this.fechaHora = fechaHora;
+	}
+
+	public String getMensaje() {
+		return mensaje;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+	public Ejemplar getEjemplar() {
+		return ejemplar;
+	}
+
+	public void setEjemplar(Ejemplar ejemplar) {
+		this.ejemplar = ejemplar;
+	}
+    
+    
 }

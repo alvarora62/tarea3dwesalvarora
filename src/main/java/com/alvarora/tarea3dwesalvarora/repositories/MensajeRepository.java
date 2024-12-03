@@ -12,11 +12,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MensajeRepository extends JpaRepository<Mensaje, Long> {
 
-	@Query("SELECT m FROM Mensaje m WHERE m.persona_id = ?1")
-    List<Mensaje> findByFKPersona(Long id);
+    @Query("SELECT m FROM Mensaje m WHERE m.persona.id = ?1")
+    List<Mensaje> findByFKPersona(Long personaId);
 
-    @Query("SELECT m FROM Mensaje m WHERE m.ejemplar_id = ?1")
-    List<Mensaje> findByFKEjemplar(Long id);
+    @Query("SELECT m FROM Mensaje m WHERE m.ejemplar.id = ?1")
+    List<Mensaje> findByFKEjemplar(Long ejemplarId);
 
     @Query("SELECT m FROM Mensaje m WHERE m.fechaHora BETWEEN ?1 AND ?2")
     List<Mensaje> findBetweenDateTime(LocalDateTime firstLocalDateTime, LocalDateTime secondLocalDateTime);

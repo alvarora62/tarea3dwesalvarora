@@ -1,13 +1,20 @@
 package com.alvarora.tarea3dwesalvarora.entities;
 
-import jakarta.persistence.*;
-
 import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(name = "plantas")
+@Table
 public class Planta implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,62 +32,55 @@ public class Planta implements Serializable {
     @Column
     private String nombreCientifico;
 
-    @OneToMany(mappedBy = "planta", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Ejemplar> ejemplares = new LinkedList<>();
-
-    public Planta() {
-    }
-
-    public Planta(String codigo, String nombreComun, String nombreCientifico, Long id, List<Ejemplar> ejemplares) {
-        this.codigo = codigo;
-        this.nombreComun = nombreComun;
-        this.nombreCientifico = nombreCientifico;
-        this.id = id;
-        this.ejemplares = ejemplares;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public List<Ejemplar> getEjemplares() {
-        return ejemplares;
-    }
-
-    public void setEjemplares(List<Ejemplar> ejemplares) {
-        this.ejemplares = ejemplares;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombreCientifico() {
-        return nombreCientifico;
-    }
-
-    public void setNombreCientifico(String nombreCientifico) {
-        this.nombreCientifico = nombreCientifico;
-    }
-
-    public String getNombreComun() {
-        return nombreComun;
-    }
-
-    public void setNombreComun(String nombreComun) {
-        this.nombreComun = nombreComun;
-    }
-
     @Override
     public String toString() {
-        return "Id: " + id + " | codigo: " + codigo + " | nombre comun: " + nombreComun + " | nombre cientifico: " + nombreCientifico;
+        return "Id: " + this.id + " | codigo: " + this.codigo + " | nombre comun: " + this.nombreComun + " | nombre cientifico: " + this.nombreCientifico;
     }
+    
+    public Planta() {
+		super();
+	}
+
+	public Planta(Long id, String codigo, String nombreComun, String nombreCientifico) {
+		super();
+		this.id = id;
+		this.codigo = codigo;
+		this.nombreComun = nombreComun;
+		this.nombreCientifico = nombreCientifico;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getNombreComun() {
+		return nombreComun;
+	}
+
+	public void setNombreComun(String nombreComun) {
+		this.nombreComun = nombreComun;
+	}
+
+	public String getNombreCientifico() {
+		return nombreCientifico;
+	}
+
+	public void setNombreCientifico(String nombreCientifico) {
+		this.nombreCientifico = nombreCientifico;
+	}
+    
+	
+    
 }
