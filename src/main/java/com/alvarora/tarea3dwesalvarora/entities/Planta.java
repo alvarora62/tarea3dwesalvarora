@@ -25,9 +25,8 @@ public class Planta implements Serializable {
     @Column
     private String nombreCientifico;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn
-    private List<Ejemplar> ejemplares = new LinkedList<Ejemplar>();
+    @OneToMany(mappedBy = "planta", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ejemplar> ejemplares = new LinkedList<>();
 
     public Planta() {
     }

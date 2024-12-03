@@ -15,21 +15,19 @@ public class Credenciales implements Serializable {
     private Long id;
 
     @Column(unique = true)
-    private String usuario;
+    private String username;
 
-    @Column
     private String password;
 
-    @OneToOne
     @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Persona persona;
 
     public Credenciales() {
     }
 
-    public Credenciales(Long id, String usuario, String password, Persona persona) {
+    public Credenciales(Long id, String username, String password, Persona persona) {
         this.id = id;
-        this.usuario = usuario;
+        this.username = username;
         this.password = password;
         this.persona = persona;
     }
@@ -42,12 +40,12 @@ public class Credenciales implements Serializable {
         this.id = id;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

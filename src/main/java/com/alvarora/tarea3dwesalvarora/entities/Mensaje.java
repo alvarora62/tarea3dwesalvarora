@@ -23,9 +23,11 @@ public class Mensaje implements Serializable {
     private String mensaje;
 
     @Column
+    @JoinColumn(name = "persona_id", referencedColumnName = "id")
     private Persona persona;
 
     @Column
+    @JoinColumn(name = "ejemplar_id", referencedColumnName = "id")
     private Ejemplar ejemplar;
 
     public Mensaje() {

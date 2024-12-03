@@ -17,8 +17,8 @@ public class Ejemplar implements Serializable {
     @Column
     private String nombre;
 
-    @ManyToOne
-    @JoinColumn(name = "idplanta")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "codigoplanta", referencedColumnName = "codigo")
     private Planta planta;
 
     public Ejemplar() {

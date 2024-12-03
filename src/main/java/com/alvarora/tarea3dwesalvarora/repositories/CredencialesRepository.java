@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CredencialesRepository extends JpaRepository<Credenciales, Long> {
+
+	Credenciales findByUsername(String username);
+	boolean existsByUsername(String username);
 }
