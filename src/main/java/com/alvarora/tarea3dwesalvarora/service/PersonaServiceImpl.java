@@ -32,7 +32,7 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
     @Override
-    @Transactional
+    //@Transactional
     public PersonaSaveResult save(Persona persona) {
         if (checkName(persona.getNombre())) {
             return PersonaSaveResult.INVALID_NAME;

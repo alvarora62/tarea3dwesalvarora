@@ -13,9 +13,8 @@ import static com.alvarora.tarea3dwesalvarora.view.Spacer.spacer;
 public class MainMenu {
 
     // Variables de utilidad
-    static Long activeUser_id;
     static String activeUser_username;
-    boolean on = true;
+    boolean on = false;
     Scanner sc = new Scanner(System.in);
 
     @Autowired
@@ -41,19 +40,19 @@ public class MainMenu {
                 switch (answer) {
                     case 1:
                         spacer();
-                        // Llamada al menu de plantas?
-                        controller.getServicioPlanta().findAll();
+                        // Llamada al menu de plantas
                         on = true;
                         break;
                     case 2:
                         spacer();
-                        int nivel;
 
+                        // Pedir datos al usuario
                         System.out.println("\tNombre de usuario");
                         activeUser_username = sc.next();
                         System.out.println("\tContraseña:");
                         String password = sc.next();
 
+                        // Validar los datos del usuario
                         switch (controller.getServicioCredenciales().login(activeUser_username, password)) {
                             case USERNAME_ERROR:
                                 System.err.println("Error en el nombre de usuario.");
@@ -62,15 +61,11 @@ public class MainMenu {
                                 System.err.println("Error en la contraseña.");
                                 break;
                             case USER:
-                                // Mirar si necesario?
-//                                Credenciales login = controller.getServicioCredenciales().findByUsername(activeUser_username);
-//                                activeUser_id = controlador.getServicioPersona().findById(login.getFk_persona().getId()).getId();
                                 password = "";
                                 menuPrincipalPersonal();
                                 break;
                             case ADMIN:
-                                activeUser_id = controller.getServicioPersona().findByEmail("admin@admin.com").getId();
-                                //menuPrincipalAdmin();
+                                menuPrincipalAdmin();
                                 break;
                         }
 
