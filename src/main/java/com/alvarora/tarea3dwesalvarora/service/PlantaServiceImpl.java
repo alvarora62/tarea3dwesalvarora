@@ -1,12 +1,11 @@
 package com.alvarora.tarea3dwesalvarora.service;
 
-import java.util.List;
-
+import com.alvarora.tarea3dwesalvarora.entities.Planta;
+import com.alvarora.tarea3dwesalvarora.repositories.PlantaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alvarora.tarea3dwesalvarora.entities.Planta;
-import com.alvarora.tarea3dwesalvarora.repositories.PlantaRepository;
+import java.util.List;
 
 @Service
 public class PlantaServiceImpl implements PlantaService {
@@ -35,7 +34,7 @@ public class PlantaServiceImpl implements PlantaService {
 			return false;
 		}
 		
-		if (!checkCodigo(planta)) {
+		if (isCodigoValid(planta)) {
 			return false;
 		}
 		
@@ -49,7 +48,7 @@ public class PlantaServiceImpl implements PlantaService {
 			return false;
 		}
 		
-		if (!checkCodigo(planta)) {
+		if (isCodigoValid(planta)) {
 			return false;
 		}
 		
@@ -57,7 +56,7 @@ public class PlantaServiceImpl implements PlantaService {
 		return true;
 	}
 	
-	private boolean checkCodigo(Planta planta) {
+	private boolean isCodigoValid(Planta planta) {
 		if (planta.getCodigo() == null || !planta.getCodigo().toUpperCase().matches(codigoPattern)) {
             return false;
         }

@@ -1,10 +1,10 @@
 package com.alvarora.tarea3dwesalvarora.service;
 
-import java.util.List;
-
 import com.alvarora.tarea3dwesalvarora.entities.Credenciales;
 import com.alvarora.tarea3dwesalvarora.entities.Persona;
-import com.alvarora.tarea3dwesalvarora.exceptions.PersonaSaveResult;
+import com.alvarora.tarea3dwesalvarora.utils.PersonaSaveResult;
+
+import java.util.List;
 
 public interface PersonaService {
 	

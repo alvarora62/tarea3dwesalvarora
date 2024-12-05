@@ -1,14 +1,12 @@
 package com.alvarora.tarea3dwesalvarora.service;
 
+import com.alvarora.tarea3dwesalvarora.entities.Credenciales;
+import com.alvarora.tarea3dwesalvarora.repositories.CredencialesRepository;
+import com.alvarora.tarea3dwesalvarora.utils.CredencialesSaveResult;
+import com.alvarora.tarea3dwesalvarora.utils.LoginResult;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.alvarora.tarea3dwesalvarora.entities.Credenciales;
-import com.alvarora.tarea3dwesalvarora.exceptions.CredencialesSaveResult;
-import com.alvarora.tarea3dwesalvarora.exceptions.LoginResult;
-import com.alvarora.tarea3dwesalvarora.repositories.CredencialesRepository;
-
-import jakarta.transaction.Transactional;
 
 @Service
 public class CredencialesServiceImpl implements CredencialesService {

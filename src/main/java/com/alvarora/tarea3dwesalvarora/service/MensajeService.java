@@ -1,9 +1,9 @@
 package com.alvarora.tarea3dwesalvarora.service;
 
+import com.alvarora.tarea3dwesalvarora.entities.Mensaje;
+
 import java.time.LocalDateTime;
 import java.util.List;
-
-import com.alvarora.tarea3dwesalvarora.entities.Mensaje;
 
 public interface MensajeService {
 

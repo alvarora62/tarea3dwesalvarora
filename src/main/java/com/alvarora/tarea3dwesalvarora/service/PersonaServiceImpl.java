@@ -1,17 +1,14 @@
 package com.alvarora.tarea3dwesalvarora.service;
 
-import java.util.List;
-
+import com.alvarora.tarea3dwesalvarora.entities.Credenciales;
+import com.alvarora.tarea3dwesalvarora.entities.Persona;
+import com.alvarora.tarea3dwesalvarora.repositories.PersonaRepository;
+import com.alvarora.tarea3dwesalvarora.utils.PersonaSaveResult;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alvarora.tarea3dwesalvarora.entities.Credenciales;
-import com.alvarora.tarea3dwesalvarora.entities.Persona;
-import com.alvarora.tarea3dwesalvarora.exceptions.NotFoundException;
-import com.alvarora.tarea3dwesalvarora.exceptions.PersonaSaveResult;
-import com.alvarora.tarea3dwesalvarora.repositories.PersonaRepository;
-
-import jakarta.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class PersonaServiceImpl implements PersonaService {

@@ -1,13 +1,12 @@
 package com.alvarora.tarea3dwesalvarora.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.alvarora.tarea3dwesalvarora.entities.Ejemplar;
 import com.alvarora.tarea3dwesalvarora.exceptions.NotFoundException;
 import com.alvarora.tarea3dwesalvarora.repositories.EjemplarRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EjemplarServiceImpl implements EjemplarService {

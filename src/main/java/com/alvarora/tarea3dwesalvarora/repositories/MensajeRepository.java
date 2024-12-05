@@ -1,13 +1,12 @@
 package com.alvarora.tarea3dwesalvarora.repositories;
 
 import com.alvarora.tarea3dwesalvarora.entities.Mensaje;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public interface MensajeRepository extends JpaRepository<Mensaje, Long> {
