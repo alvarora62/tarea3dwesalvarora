@@ -6,6 +6,7 @@ import com.alvarora.tarea3dwesalvarora.utils.CredencialesSaveResult;
 import com.alvarora.tarea3dwesalvarora.utils.LoginResult;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,35 +18,6 @@ public class CredencialesServiceImpl implements CredencialesService {
 	@Override
 	public Credenciales findByUsername(String username) {
 		return credencialesRepository.findByUsername(username);
-	}
-	
-	/**
-	 * Método para realizar el inicio de sesión en la aplicación.
-	 *
-	 * @param username - usuario a loguear
-	 * @param password - contraseña del usuario
-	 * @return LoginResult que indica el resultado del inicio de sesión.
-	 */
-	@Override
-	public LoginResult login(String username, String password) {
-	    // usuario administrador?
-	    if ("admin".equals(username) && "admin".equals(password)) {
-	        return LoginResult.ADMIN;
-	    }
-
-	    // Busca credenciales en base de datos
-	    Credenciales credenciales = credencialesRepository.findByUsername(username);
-
-	    if (credenciales == null) {
-	        return LoginResult.CRENDENTIALS_ERROR;
-	    }
-
-	    // Verifica las credenciales del usuario
-	    if (username.equals(credenciales.getUsername()) && password.equals(credenciales.getPassword())) {
-	        return LoginResult.USER;
-	    }
-
-	    return LoginResult.CRENDENTIALS_ERROR;
 	}
 
 	@Override
@@ -107,5 +79,35 @@ public class CredencialesServiceImpl implements CredencialesService {
 	    }
 
 	    return true;
+	}
+
+	/**
+	 * Método para realizar el inicio de sesión en la aplicación.
+	 *
+	 * @param username - usuario a loguear
+	 * @param password - contraseña del usuario
+	 * @return LoginResult que indica el resultado del inicio de sesión.
+	 */
+	@Override
+	public LoginResult login(String username, String password) {
+		// usuario administrador?
+		if ("admin".equals(username) && "admin".equals(password)) {
+			return LoginResult.ADMIN;
+		}
+
+		// Busca credenciales en base de datos
+		Credenciales credenciales = credencialesRepository.findByUsername(username);
+
+		if (credenciales == null) {
+			return LoginResult.USERNAME_ERROR;
+		}
+
+		// Verifica las credenciales del usuario
+		if (username.equals(credenciales.getUsername()) && password.equals(credenciales.getPassword())) {
+			return LoginResult.USER;
+		}
+
+		// Si el nombre de usuario existe pero las contraseñas no coinciden devuelve error de contraseña.
+		return LoginResult.PASSWORD_ERROR;
 	}
 }

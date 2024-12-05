@@ -3,6 +3,7 @@ package com.alvarora.tarea3dwesalvarora.service;
 import com.alvarora.tarea3dwesalvarora.entities.Ejemplar;
 import com.alvarora.tarea3dwesalvarora.exceptions.NotFoundException;
 import com.alvarora.tarea3dwesalvarora.repositories.EjemplarRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,7 @@ public class EjemplarServiceImpl implements EjemplarService {
 	}
 
 	@Override
+	@Transactional
 	public boolean save(Ejemplar ejemplar) {
 		ejemplarRepository.save(ejemplar);
         List<Ejemplar> ejemplars = ejemplarRepository.findAll();

@@ -2,6 +2,7 @@ package com.alvarora.tarea3dwesalvarora.service;
 
 import com.alvarora.tarea3dwesalvarora.entities.Planta;
 import com.alvarora.tarea3dwesalvarora.repositories.PlantaRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,7 @@ public class PlantaServiceImpl implements PlantaService {
 	}
 
 	@Override
+	@Transactional
 	public boolean save(Planta planta) {
 		if (planta == null) {
 			return false;
@@ -43,6 +45,7 @@ public class PlantaServiceImpl implements PlantaService {
 	}
 
 	@Override
+	@Transactional
 	public boolean update(Planta planta) {
 		if (planta == null) {
 			return false;

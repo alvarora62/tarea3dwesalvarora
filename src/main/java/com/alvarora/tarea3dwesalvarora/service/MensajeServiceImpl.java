@@ -2,6 +2,7 @@ package com.alvarora.tarea3dwesalvarora.service;
 
 import com.alvarora.tarea3dwesalvarora.entities.Mensaje;
 import com.alvarora.tarea3dwesalvarora.repositories.MensajeRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,7 @@ public class MensajeServiceImpl implements MensajeService{
 	}
 
 	@Override
+	@Transactional
 	public void save(Mensaje mensaje) {
 		mensajeRepository.save(mensaje);
 	}
