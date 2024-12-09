@@ -32,13 +32,25 @@ public class EjemplarServiceImpl implements EjemplarService {
 
 	@Override
 	@Transactional
-	public boolean save(Ejemplar ejemplar) {
-		ejemplarRepository.save(ejemplar);
-        List<Ejemplar> ejemplars = ejemplarRepository.findAll();
-        Ejemplar e = ejemplars.get(ejemplars.size() - 1);
-        ejemplar.setId(e.getId());
-        ejemplar.setNombre(e.getPlanta().getCodigo() + "-" + e.getId());
-        ejemplarRepository.save(ejemplar);
+	public boolean save(Ejemplar saveEjemplar, Long idPersona) {
+		// Guardar el ejemplar recien creado
+		ejemplarRepository.save(saveEjemplar);
+
+		// Recoger todos los ejemplares
+        List<Ejemplar> ejemplares = ejemplarRepository.findAll();
+        Ejemplar e = ejemplares.get(ejemplares.size() - 1);
+
+		// Buscar la id del ultimo añadido y ponerle el nombre
+		saveEjemplar.setId(e.getId());
+		saveEjemplar.setNombre(e.getPlanta().getCodigo() + "-" + e.getId());
+
+		// Actualizar el ejemplar con el nombre nuevo
+        ejemplarRepository.save(saveEjemplar);
+
+		// Crear el mensaje inicial
+		MensajeServiceImpl mensajeService = new MensajeServiceImpl();
+		mensajeService.mensajeInicial(idPersona,saveEjemplar.getId());
+
         return true;
 	}
 

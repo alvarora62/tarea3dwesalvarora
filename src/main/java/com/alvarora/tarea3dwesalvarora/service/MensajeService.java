@@ -12,5 +12,5 @@ public interface MensajeService {
     List<Mensaje> findByEjemplar(Long id);
     List<Mensaje> findBetweenDateTime(LocalDateTime firstLocalDateTime, LocalDateTime secondLocalDateTime);
     void save(Mensaje mensaje);
-    void mensajeInicial(Mensaje mensaje);
+    void mensajeInicial(Long idPersona, Long idEjemplar);
 }

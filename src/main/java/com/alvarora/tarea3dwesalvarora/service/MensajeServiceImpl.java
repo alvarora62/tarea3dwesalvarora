@@ -15,6 +15,12 @@ public class MensajeServiceImpl implements MensajeService{
 	@Autowired
 	private MensajeRepository mensajeRepository;
 
+	@Autowired
+	private PersonaServiceImpl personaService;
+
+	@Autowired
+	private EjemplarServiceImpl ejemplarService;
+
 	@Override
 	public List<Mensaje> findAll() {
 		return mensajeRepository.findAll();
@@ -42,11 +48,19 @@ public class MensajeServiceImpl implements MensajeService{
 	}
 
 	@Override
-	public void mensajeInicial(Mensaje mensaje) {
-		mensaje.setMensaje("Añadido el ejemplar " + mensaje.getEjemplar().getNombre() + " a la base de datos");
+	public void mensajeInicial(Long idPersona, Long idEjemplar) {
+		// Creación de mensaje inicial
+		Mensaje starterMensaje = new Mensaje();
+		starterMensaje.setPersona(personaService.findById(idPersona));
+		starterMensaje.setEjemplar(ejemplarService.findById(idEjemplar));
+
+		// Escritura del mensaje inicial
+		starterMensaje.setMensaje("Añadido el ejemplar " + starterMensaje.getEjemplar().getNombre() + " a la base de datos");
         LocalDateTime localDateTime = LocalDateTime.now();
-        mensaje.setFechaHora(localDateTime);
-        mensajeRepository.save(mensaje);
+		starterMensaje.setFechaHora(localDateTime);
+
+		// Guardado del mensaje
+		mensajeRepository.save(starterMensaje);
 	}
 
 }

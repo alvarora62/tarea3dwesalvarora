@@ -9,6 +9,6 @@ public interface EjemplarService {
 	List<Ejemplar> findAll();
     Ejemplar findById(Long id);
     List<Ejemplar> findByFkPlanta(String codigo);
-    boolean save(Ejemplar ejemplar);
+    boolean save(Ejemplar saveEjemplar, Long idPersona);
     boolean update(Ejemplar ejemplar);
 }
